@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         
         client = TCPClient(address: host, port: Int32(port))
         
+        /*
         // We need to run through commands as an initialization process
         // Rough implementation, will refactor into a method
         let atArray = ["AT D\r", "AT Z\r", "AT E0\r", "AT L0\r", "AT S0\r", "AT H0\r", "AT SP 0\r"]
@@ -47,7 +48,7 @@ class ViewController: UIViewController {
                 appendToTextField(string: String(describing: error))
             }
             
-        }
+        }*/
         
     }
 
