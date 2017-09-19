@@ -15,18 +15,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     // Hard coded IP adress for the OBDII adapter
-    //let host = "192.168.0.10"
-    //let port = 35000
-    let host = "google.com"
-    let port = 80
+    let host = "192.168.0.10"
+    var port = 35000
     var client: TCPClient?
+   
+    var ip_address = " "
+    
+    var server_address = " "
+    var username = " "
+    var password = " "
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        client = TCPClient(address: host, port: Int32(port))
+        print(ip_address)
+        print(port)
+        print(server_address)
+        print(username)
+        print(password)
         
+        client = TCPClient(address: host, port: Int32(port))
         /*
         // We need to run through commands as an initialization process
         // Rough implementation, will refactor into a method
