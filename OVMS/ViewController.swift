@@ -15,8 +15,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     // Hard coded IP adress for the OBDII adapter
-    let host = "192.168.0.10"
-    let port = 35000
+    //let host = "192.168.0.10"
+    //let port = 35000
+    let host = "google.com"
+    let port = 80
     var client: TCPClient?
     
     
