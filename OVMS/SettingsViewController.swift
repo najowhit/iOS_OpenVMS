@@ -27,7 +27,8 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         
-        if ip_address.text == "12345"{
+        // We need to ensure that an IP address is not an empty string
+        if ip_address.text != ""{
             performSegue(withIdentifier: "vcSegue", sender: self)
         }
     }
