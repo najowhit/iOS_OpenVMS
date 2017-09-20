@@ -15,12 +15,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     // Hard coded IP adress for the OBDII adapter
+    
+    var client: TCPClient?
+    var ip_address = " "
     let host = "192.168.0.10"
     var port = 35000
-    var client: TCPClient?
-   
-    var ip_address = " "
-    
     var server_address = " "
     var username = " "
     var password = " "
@@ -36,7 +35,9 @@ class ViewController: UIViewController {
         print(password)
         
         client = TCPClient(address: host, port: Int32(port))
+        
         /*
+        // Make this a method within the OBD class I will build, OBD.initialize()
         // We need to run through commands as an initialization process
         // Rough implementation, will refactor into a method
         let atArray = ["AT D\r", "AT Z\r", "AT E0\r", "AT L0\r", "AT S0\r", "AT H0\r", "AT SP 0\r"]
