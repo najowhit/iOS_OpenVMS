@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NM2-Hq-mpe">
-                            <rect key="frame" x="0.0" y="349.5" width="375" height="85"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SCN-qT-lLd">
+                            <rect key="frame" x="0.0" y="349.5" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                             <state key="normal" title="Collect Data"/>
                             <connections>
-                                <action selector="buttonTapped:" destination="j3p-K1-XAD" eventType="touchUpInside" id="dnk-Cu-tc5"/>
-                                <segue destination="BYZ-38-t0r" kind="show" id="a7B-nw-x2n"/>
+                                <action selector="buttonTapped:" destination="j3p-K1-XAD" eventType="touchUpInside" id="EaZ-Eu-qzh"/>
                             </connections>
                         </button>
                         <sections>
@@ -171,6 +171,7 @@
                         <outlet property="port" destination="JnJ-eg-z0e" id="XTU-lW-qeC"/>
                         <outlet property="server_address" destination="Hg2-Fm-ilS" id="m04-8k-Rln"/>
                         <outlet property="username" destination="phf-Vq-CTV" id="E03-l3-dNN"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="vcSegue" id="d0y-9O-4sS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GO0-W8-PdJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -25,19 +25,28 @@ class SettingsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        
+        if ip_address.text == "12345"{
+            performSegue(withIdentifier: "vcSegue", sender: self)
+        }
+    }
     
     /*
     * Pass data through the segue
     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-        let targetVC = segue.destination as! ViewController
         
-        targetVC.ip_address = ip_address.text!
-        // If Int(port.text!) is nil, targetVC.port = 35000
-        targetVC.port = Int(port.text!) ?? 35000
-        targetVC.server_address = server_address.text!
-        targetVC.username = username.text!
-        targetVC.password = password.text!
+        if segue.identifier == "vcSegue" {
+            let targetVC = segue.destination as! ViewController
+        
+            targetVC.ip_address = ip_address.text!
+            // If Int(port.text!) is nil, targetVC.port = 35000
+            targetVC.port = Int(port.text!) ?? 35000
+            targetVC.server_address = server_address.text!
+            targetVC.username = username.text!
+            targetVC.password = password.text!
+        }
     }
     
 }
