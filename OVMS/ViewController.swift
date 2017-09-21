@@ -33,11 +33,17 @@ class ViewController: UIViewController {
         print(server_address)
         print(username)
         print(password)
+        appendToTextField(string: ip_address)
+        appendToTextField(string: String(port))
+        appendToTextField(string: server_address)
+        appendToTextField(string: username)
+        appendToTextField(string: password)
         
         client = TCPClient(address: host, port: Int32(port))
         
-        /*
-        // Make this a method within the OBD class I will build, OBD.initialize()
+        
+        // Make this a method within the OBD class I will build, OBD.initialize() or 
+        // OBD.connect(host, port)
         // We need to run through commands as an initialization process
         // Rough implementation, will refactor into a method
         let atArray = ["AT D\r", "AT Z\r", "AT E0\r", "AT L0\r", "AT S0\r", "AT H0\r", "AT SP 0\r"]
@@ -45,7 +51,7 @@ class ViewController: UIViewController {
         for i in 0...atArray.count - 1{
             guard let client = client else { return }
             
-            switch client.connect(timeout: 10) {
+            switch client.connect(timeout: 1) {
             case .success:
                 appendToTextField(string: "Connected to host \(client.address)")
                 
@@ -60,7 +66,7 @@ class ViewController: UIViewController {
                 appendToTextField(string: String(describing: error))
             }
             
-        }*/
+        }
         
     }
 
@@ -76,7 +82,7 @@ class ViewController: UIViewController {
         case .success:
             appendToTextField(string: "Connected to host \(client.address)")
             
-            let str = "0105\r"
+            let str = "0104\r"
             let buf = [UInt8](str.utf8)
             if let response = sendRequest(bytesArray: buf, using: client){
                 appendToTextField(string: "Response: \(response)")
