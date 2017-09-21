@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var username = " "
     var password = " "
     
+    let swiftOBD = SwiftOBD()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,9 @@ class ViewController: UIViewController {
         appendToTextField(string: username)
         appendToTextField(string: password)
         
+        swiftOBD.setupNetworkCommunication(address: ip_address, port: Int32(port))
+        
+        /*
         client = TCPClient(address: host, port: Int32(port))
         
         
@@ -66,10 +70,10 @@ class ViewController: UIViewController {
                 appendToTextField(string: String(describing: error))
             }
             
-        }
+        }*/
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
