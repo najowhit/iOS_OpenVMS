@@ -24,6 +24,8 @@ class SwiftOBD: NSData {
         inputStream = readStream!.takeRetainedValue()
         outputStream = writeStream!.takeRetainedValue()
         
+        inputStream.delegate = self
+        
         inputStream.schedule(in: .current, forMode: .commonModes)
         outputStream.schedule(in: .current, forMode: .commonModes)
         
@@ -40,5 +42,44 @@ class SwiftOBD: NSData {
     
 }
 
-extension SwiftOBD: StreamDelegate{
+extension SwiftOBD: StreamDelegate {
+    
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        
+        switch eventCode {
+        case Stream.Event.hasBytesAvailable:
+            print("new response received")
+        case Stream.Event.endEncountered:
+            print("new response received")
+        case Stream.Event.errorOccurred:
+            print("error occurred")
+        case Stream.Event.hasSpaceAvailable:
+            print("has space available")
+            readAvailableBytes(stream: aStream as! InputStream)
+        default:
+            print("some other event...")
+            break
+        }
+    }
+    
+    private func readAvailableBytes(stream: InputStream) {
+        
+        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: maxReadLength)
+        
+        while stream.hasBytesAvailable {
+            let numberOfBytesRead = inputStream.read(buffer, maxLength: maxReadLength)
+            
+            if numberOfBytesRead < 0 {
+                if let _ = stream.streamError{
+                    break
+                }
+            }
+         
+        // message object goes here
+        
+        }
+    }
+    
+
+
 }
