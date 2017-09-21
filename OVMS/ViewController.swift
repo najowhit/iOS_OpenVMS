@@ -41,6 +41,8 @@ class ViewController: UIViewController {
         appendToTextField(string: password)
         
         swiftOBD.setupNetworkCommunication(address: ip_address, port: Int32(port))
+        var command = "ATZ\r"
+        swiftOBD.sendCommand(command: command)
         
         /*
         client = TCPClient(address: host, port: Int32(port))

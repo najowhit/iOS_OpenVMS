@@ -9,7 +9,7 @@
 import Foundation
 import SwiftSocket
 
-class SwiftOBD {
+class SwiftOBD: NSData {
     var inputStream: InputStream!
     var outputStream: OutputStream!
     
@@ -37,4 +37,8 @@ class SwiftOBD {
         _ = data.withUnsafeBytes { outputStream.write($0, maxLength: data.count) }
         
     }
+    
+}
+
+extension SwiftOBD: StreamDelegate{
 }
