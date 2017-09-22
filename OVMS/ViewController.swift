@@ -24,11 +24,10 @@ class ViewController: UIViewController {
     var username = " "
     var password = " "
     
-    let swiftOBD = SwiftOBD()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         print(ip_address)
         print(port)
         print(server_address)
@@ -40,13 +39,8 @@ class ViewController: UIViewController {
         appendToTextField(string: username)
         appendToTextField(string: password)
         
-        swiftOBD.setupNetworkCommunication(address: ip_address, port: Int32(port))
-        var command = "ATZ\r"
-        swiftOBD.sendCommand(command: command)
         
-        /*
         client = TCPClient(address: host, port: Int32(port))
-        
         
         // Make this a method within the OBD class I will build, OBD.initialize() or 
         // OBD.connect(host, port)
@@ -72,7 +66,7 @@ class ViewController: UIViewController {
                 appendToTextField(string: String(describing: error))
             }
             
-        }*/
+        }
         
     }
     
@@ -116,18 +110,44 @@ class ViewController: UIViewController {
         
         // Initial fix to the issue of not reading all the data - keeps the connection open longer
         var response = [UInt8]()
-        while true {
-            guard let data = client.read(1024*10, timeout: 2) else { break }
+        var keepGoing = true
+        while keepGoing {
+            guard let data = client.read(1024*10, timeout: 2) else { return nil }
             response += data
+            
+            // See what this does
+            if data[data.count - 1] == 62 {
+                print("Breaking")
+                keepGoing = false
+            }
         }
         
         return String(bytes: response, encoding: .utf8)
     }
     
-    private func appendToTextField(string: String){
+    func appendToTextField(string: String){
         print(string)
         textView.text = textView.text.appending("\n\(string)")
     }
+    
+    /* I need to POST GPS data and the misc. data from the OBD to an API.
+     * Essentially in a loop (executed every n seconds) -> send command -> clean data -> get GPS -> send
+     * as JSON to API. This collection should continue if the app is minimized(until it 
+     * finishes the curent loop), but if the user presses back (to settings) it should stop.
+     * When the app is minimized, save state as best as possible.
+     */
+    
+    /* The user should be notified by pop up if the socket connection ends. Such as a car being
+     * shut off.
+     */
+    
+    /* The paragraph above should be executed on a background thread (I think). Or, the application
+     * should stop collecting data when it no longer detects the device
+    */
+    
+    /*
+     * Send a flag that shows wether or not the user stopped collecting.
+    */
 
 }
 
