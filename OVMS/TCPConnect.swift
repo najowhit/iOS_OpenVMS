@@ -17,22 +17,24 @@ class TCPConnect {
         self.client = TCPClient(address: address, port: port)
     }
     
-    func executeConnection(command: String) {
-        guard let client = client else { return }
+    func executeConnection(command: String) -> String? {
+        guard let client = client else { return nil}
         
+        var obdResponse: String?
         switch client.connect(timeout: 10){
         case .success:
             print("Connected to host \(client.address)")
             
-            let str = "0104\r"
-            let buf = [UInt8](str.utf8)
+            let buf = [UInt8](command.utf8)
             if let response = sendRequest(bytesArray: buf, using: client){
                 print("Response: \(response)")
+                obdResponse = response
             }
         case .failure(let error):
             print(error)
         }
         
+        return obdResponse
     }
     
     private func sendRequest(bytesArray: [UInt8], using client: TCPClient) -> String? {

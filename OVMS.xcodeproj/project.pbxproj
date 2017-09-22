@@ -10,6 +10,7 @@
 		8188C51A42482823C202B579 /* Pods_OVMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8831883425DFD93732F5B2BA /* Pods_OVMS.framework */; };
 		D81250C21F70A806009C8259 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81250C11F70A806009C8259 /* SettingsViewController.swift */; };
 		D860598D1F744DE200903356 /* TCPConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D860598C1F744DE200903356 /* TCPConnect.swift */; };
+		D860598F1F74B7D600903356 /* SwiftOBD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D860598E1F74B7D600903356 /* SwiftOBD.swift */; };
 		D89F19021F6C2D7000BFB884 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89F19011F6C2D7000BFB884 /* AppDelegate.swift */; };
 		D89F19041F6C2D7000BFB884 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89F19031F6C2D7000BFB884 /* ViewController.swift */; };
 		D89F19071F6C2D7000BFB884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89F19051F6C2D7000BFB884 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		8831883425DFD93732F5B2BA /* Pods_OVMS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OVMS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81250C11F70A806009C8259 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D860598C1F744DE200903356 /* TCPConnect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPConnect.swift; sourceTree = "<group>"; };
+		D860598E1F74B7D600903356 /* SwiftOBD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftOBD.swift; sourceTree = "<group>"; };
 		D89F18FE1F6C2D7000BFB884 /* OVMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OVMS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89F19011F6C2D7000BFB884 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D89F19031F6C2D7000BFB884 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				D89F19011F6C2D7000BFB884 /* AppDelegate.swift */,
 				D89F19031F6C2D7000BFB884 /* ViewController.swift */,
 				D860598C1F744DE200903356 /* TCPConnect.swift */,
+				D860598E1F74B7D600903356 /* SwiftOBD.swift */,
 				D81250C11F70A806009C8259 /* SettingsViewController.swift */,
 				D89F19051F6C2D7000BFB884 /* Main.storyboard */,
 				D89F19081F6C2D7000BFB884 /* Assets.xcassets */,
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D89F19041F6C2D7000BFB884 /* ViewController.swift in Sources */,
+				D860598F1F74B7D600903356 /* SwiftOBD.swift in Sources */,
 				D89F19021F6C2D7000BFB884 /* AppDelegate.swift in Sources */,
 				D860598D1F744DE200903356 /* TCPConnect.swift in Sources */,
 				D81250C21F70A806009C8259 /* SettingsViewController.swift in Sources */,
