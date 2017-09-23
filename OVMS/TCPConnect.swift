@@ -13,8 +13,8 @@ class TCPConnect {
     
     let client: TCPClient?
     
-    init(address: String, port: Int32) {
-        self.client = TCPClient(address: address, port: port)
+    init(client: TCPClient) {
+        self.client = client
     }
     
     func executeConnection(command: String) -> String? {

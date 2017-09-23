@@ -7,21 +7,25 @@
 //
 
 import Foundation
+import SwiftSocket
 
 class SwiftOBD {
     
-    var socket: TCPConnect
+    var socket: TCPClient
+    var client: TCPConnect
     var host: String
     var port: Int32
     
     init(host: String, port: Int32) {
         self.host = host
         self.port = port
-        socket = TCPConnect(address: host, port: port)
+        socket = TCPClient(address: host, port: port)
+        client = TCPConnect(client: socket)
+        
     }
     
-    func sendCommand(command: String) {
-        socket.executeConnection(command: command)
+    func sendCommand(command: String) -> String? {
+       return client.executeConnection(command: command)
     }
     
     
