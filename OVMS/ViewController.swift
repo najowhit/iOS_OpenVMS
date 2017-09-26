@@ -8,13 +8,13 @@
 
 import UIKit
 import SwiftSocket
+import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
     
 
     @IBOutlet weak var textView: UITextView!
     
-    // Hard coded IP adress for the OBDII adapter
     
     var client: TCPClient?
     var ip_address = " "
@@ -24,9 +24,19 @@ class ViewController: UIViewController {
     var username = " "
     var password = " "
     
+    let locationManager = CLLocationManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.requestWhenInUseAuthorization()
+      
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     
         print(ip_address)
         print(port)
@@ -47,6 +57,12 @@ class ViewController: UIViewController {
         // We need to run through commands as an initialization process
         // Rough implementation, will refactor into a method
         let atArray = ["AT D\r", "AT Z\r", "AT E0\r", "AT L0\r", "AT S0\r", "AT H0\r", "AT SP 0\r"]
+        //let test = SwiftOBD(host: ip_address, port: Int32(port))
+        
+       /* for i in 0...atArray.count - 1{
+            var result = test.sendCommand(command: atArray[i])
+            //appendToTextField(string: result!)
+        }*/
         
         for i in 0...atArray.count - 1{
             guard let client = client else { return }
@@ -149,5 +165,13 @@ class ViewController: UIViewController {
      * Send a flag that shows wether or not the user stopped collecting.
     */
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation:CLLocation = locations[0]
+        let long = userLocation.coordinate.longitude;
+        let lat = userLocation.coordinate.latitude;
+        
+        print(long, lat)
+    }
+    
 }
 
