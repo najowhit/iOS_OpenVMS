@@ -30,19 +30,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.requestWhenInUseAuthorization()
-      
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
-    
-        print(ip_address)
-        print(port)
-        print(server_address)
-        print(username)
-        print(password)
         appendToTextField(string: ip_address)
         appendToTextField(string: String(port))
         appendToTextField(string: server_address)
@@ -57,12 +44,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // We need to run through commands as an initialization process
         // Rough implementation, will refactor into a method
         let atArray = ["AT D\r", "AT Z\r", "AT E0\r", "AT L0\r", "AT S0\r", "AT H0\r", "AT SP 0\r"]
-        //let test = SwiftOBD(host: ip_address, port: Int32(port))
-        
-       /* for i in 0...atArray.count - 1{
-            var result = test.sendCommand(command: atArray[i])
-            //appendToTextField(string: result!)
-        }*/
         
         for i in 0...atArray.count - 1{
             guard let client = client else { return }
@@ -107,6 +88,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             appendToTextField(string: String(describing: error))
         }
         
+        getUserLocation()
     }
     
     private func sendRequest(bytesArray: [UInt8], using client: TCPClient) -> String? {
@@ -165,13 +147,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
      * Send a flag that shows wether or not the user stopped collecting.
     */
 
+    func getUserLocation() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0]
         let long = userLocation.coordinate.longitude;
         let lat = userLocation.coordinate.latitude;
+        locationManager.stopUpdatingLocation()
         
         print(long, lat)
     }
+    
+    
     
 }
 
