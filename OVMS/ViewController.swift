@@ -24,17 +24,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var username = " "
     var password = " "
     
+    
     let locationManager = CLLocationManager()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        appendToTextField(string: ip_address)
-        appendToTextField(string: String(port))
-        appendToTextField(string: server_address)
-        appendToTextField(string: username)
-        appendToTextField(string: password)
         
         
         client = TCPClient(address: host, port: Int32(port))
@@ -57,7 +52,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 let buf = [UInt8](str.utf8)
                 
                 if let response = sendRequest(bytesArray: buf, using: client) {
-                    appendToTextField(string: "Response: \(response)")
+                   print(response)
                 }
             case .failure(let error):
                 appendToTextField(string: String(describing: error))
@@ -73,6 +68,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     @IBAction func sendButtonAction() {
+        
         guard let client = client else { return }
         
         switch client.connect(timeout: 10){
@@ -89,6 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         getUserLocation()
+        
     }
     
     private func sendRequest(bytesArray: [UInt8], using client: TCPClient) -> String? {
@@ -146,7 +143,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     /*
      * Send a flag that shows wether or not the user stopped collecting.
     */
-
+    
+    
     func getUserLocation() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -164,6 +162,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         
         print(long, lat)
+        
+        /*
+         * Maybe POST to API from here
+        */
     }
     
     
