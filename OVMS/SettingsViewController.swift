@@ -42,7 +42,6 @@ class SettingsViewController: UITableViewController {
             let targetVC = segue.destination as! ViewController
         
             targetVC.ip_address = ip_address.text!
-            // If Int(port.text!) is nil, targetVC.port = 35000
             targetVC.port = Int(port.text!) ?? 35000
             targetVC.server_address = server_address.text!
             targetVC.username = username.text!

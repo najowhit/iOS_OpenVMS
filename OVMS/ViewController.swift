@@ -9,6 +9,7 @@
 import UIKit
 import SwiftSocket
 import CoreLocation
+import OBD2Swift
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -23,6 +24,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var server_address = " "
     var username = " "
     var password = " "
+    var resultArray = [String]()
     
     
     let locationManager = CLLocationManager()
@@ -52,7 +54,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 let buf = [UInt8](str.utf8)
                 
                 if let response = sendRequest(bytesArray: buf, using: client) {
+                   //appendToTextField(string: "Response: \(response)")
                    print(response)
+                    
                 }
             case .failure(let error):
                 appendToTextField(string: String(describing: error))
@@ -79,10 +83,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let buf = [UInt8](str.utf8)
             if let response = sendRequest(bytesArray: buf, using: client){
                 appendToTextField(string: "Response: \(response)")
+                resultArray.append(response)
+                
+                if response == "?\r\r>" {
+                    appendToTextField(string: "IT DID IT")
+                    
+                    let str = "AT D\r"
+                    let buf = [UInt8](str.utf8)
+                    sendRequest(bytesArray: buf, using: client)
+                }
             }
+            
+            
         case .failure(let error):
             appendToTextField(string: String(describing: error))
         }
+        
+        
         
         getUserLocation()
         
@@ -93,6 +110,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         switch client.send(data: Data(bytes: bytesArray)){
         case .success:
+            appendToTextField(string: "success")
             return readResponse(from: client)
         case .failure(let error):
             appendToTextField(string: String(describing: error))
@@ -110,9 +128,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             guard let data = client.read(1024*10, timeout: 2) else { return nil }
             response += data
             
-            // See what this does
+            // 62 represents the '>' character
             if data[data.count - 1] == 62 {
-                print("Breaking")
                 keepGoing = false
             }
         }
@@ -121,7 +138,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func appendToTextField(string: String){
-        print(string)
         textView.text = textView.text.appending("\n\(string)")
     }
     
@@ -155,13 +171,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    /*
+     * I need to pair the OBD response with this latitude, longitude data somehow.
+     */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0]
         let long = userLocation.coordinate.longitude;
         let lat = userLocation.coordinate.latitude;
         locationManager.stopUpdatingLocation()
         
-        print(long, lat)
+        print(lat, long, resultArray)
         
         /*
          * Maybe POST to API from here

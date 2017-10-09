@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../../../../Downloads/obd2-swift-lib-dev/OBD2-Swift/OBD2Swift.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:OVMS.xcodeproj">
    </FileRef>
    <FileRef
