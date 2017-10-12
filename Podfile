@@ -7,4 +7,5 @@ target 'OVMS' do
 
   # Pods for OVMS
   pod 'SwiftSocket', '~> 1.2'
+  pod 'OBD2-Swift'
 end

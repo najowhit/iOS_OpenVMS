@@ -9,14 +9,16 @@
 import UIKit
 import SwiftSocket
 import CoreLocation
+// Try putting this in a podfile
 import OBD2Swift
+
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
 
     @IBOutlet weak var textView: UITextView!
     
-    
+    let obd = OBD2()
     var client: TCPClient?
     var ip_address = " "
     let host = "192.168.0.10"
@@ -33,8 +35,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Connect to OBD device
+        obd.connect { [weak self] (success, error) in
+            OperationQueue.main.addOperation({
+                if let error = error {
+                    print("OBD connection failed with \(error)")
+                }
+            })
+        }
         
-        client = TCPClient(address: host, port: Int32(port))
+        
+       /* client = TCPClient(address: host, port: Int32(port))
         
         // Make this a method within the OBD class I will build, OBD.initialize() or 
         // OBD.connect(host, port)
@@ -62,7 +73,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 appendToTextField(string: String(describing: error))
             }
             
-        }
+        } */
         
     }
     
@@ -73,7 +84,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBAction func sendButtonAction() {
         
-        guard let client = client else { return }
+        /*guard let client = client else { return }
         
         switch client.connect(timeout: 10){
         case .success:
@@ -97,7 +108,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
         case .failure(let error):
             appendToTextField(string: String(describing: error))
-        }
+        }*/
         
         
         
@@ -105,7 +116,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    private func sendRequest(bytesArray: [UInt8], using client: TCPClient) -> String? {
+   /* private func sendRequest(bytesArray: [UInt8], using client: TCPClient) -> String? {
         appendToTextField(string: "Sending data ... ")
         
         switch client.send(data: Data(bytes: bytesArray)){
@@ -135,7 +146,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         return String(bytes: response, encoding: .utf8)
-    }
+    } */
     
     func appendToTextField(string: String){
         textView.text = textView.text.appending("\n\(string)")
