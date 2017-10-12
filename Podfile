@@ -6,6 +6,5 @@ target 'OVMS' do
   use_frameworks!
 
   # Pods for OVMS
-  pod 'SwiftSocket', '~> 1.2'
   pod 'OBD2-Swift'
 end
