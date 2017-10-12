@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8188C51A42482823C202B579 /* Pods_OVMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8831883425DFD93732F5B2BA /* Pods_OVMS.framework */; };
 		D81250C21F70A806009C8259 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81250C11F70A806009C8259 /* SettingsViewController.swift */; };
 		D860598D1F744DE200903356 /* TCPConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D860598C1F744DE200903356 /* TCPConnect.swift */; };
 		D860598F1F74B7D600903356 /* SwiftOBD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D860598E1F74B7D600903356 /* SwiftOBD.swift */; };
@@ -17,8 +16,7 @@
 		D89F19071F6C2D7000BFB884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89F19051F6C2D7000BFB884 /* Main.storyboard */; };
 		D89F19091F6C2D7000BFB884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89F19081F6C2D7000BFB884 /* Assets.xcassets */; };
 		D89F190C1F6C2D7000BFB884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89F190A1F6C2D7000BFB884 /* LaunchScreen.storyboard */; };
-		D8F393F51F8BF704001C2982 /* OBD2Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F393F41F8BF704001C2982 /* OBD2Swift.framework */; };
-		D8F393F61F8BF704001C2982 /* OBD2Swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8F393F41F8BF704001C2982 /* OBD2Swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E4F75A4B6BB298DA787FC2DD /* Pods_OVMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8831883425DFD93732F5B2BA /* Pods_OVMS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,7 +26,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D8F393F61F8BF704001C2982 /* OBD2Swift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,7 +46,6 @@
 		D89F19081F6C2D7000BFB884 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D89F190B1F6C2D7000BFB884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D89F190D1F6C2D7000BFB884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8F393F41F8BF704001C2982 /* OBD2Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OBD2Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABA7BF3C376D1A3F50E46F1 /* Pods-OVMS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OVMS.release.xcconfig"; path = "Pods/Target Support Files/Pods-OVMS/Pods-OVMS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,8 +55,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86059911F79D6B100903356 /* CoreLocation.framework in Frameworks */,
-				8188C51A42482823C202B579 /* Pods_OVMS.framework in Frameworks */,
-				D8F393F51F8BF704001C2982 /* OBD2Swift.framework in Frameworks */,
+				E4F75A4B6BB298DA787FC2DD /* Pods_OVMS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +83,6 @@
 		D89F18F51F6C2D7000BFB884 = {
 			isa = PBXGroup;
 			children = (
-				D8F393F41F8BF704001C2982 /* OBD2Swift.framework */,
 				D89F19001F6C2D7000BFB884 /* OVMS */,
 				D89F18FF1F6C2D7000BFB884 /* Products */,
 				C68F6AF98E3E1B3EDCDE85CF /* Pods */,
@@ -200,10 +194,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-OVMS/Pods-OVMS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OBD2-Swift/OBD2.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OBD2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
