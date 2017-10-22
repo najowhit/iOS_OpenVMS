@@ -14,6 +14,9 @@
 		D89F19071F6C2D7000BFB884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89F19051F6C2D7000BFB884 /* Main.storyboard */; };
 		D89F19091F6C2D7000BFB884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89F19081F6C2D7000BFB884 /* Assets.xcassets */; };
 		D89F190C1F6C2D7000BFB884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89F190A1F6C2D7000BFB884 /* LaunchScreen.storyboard */; };
+		D8F393FA1F9C38E5001C2982 /* EnumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F393F91F9C38E5001C2982 /* EnumList.swift */; };
+		D8F393FC1F9C38F1001C2982 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F393FB1F9C38F1001C2982 /* LinkedList.swift */; };
+		D8F393FE1F9C392D001C2982 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F393FD1F9C392D001C2982 /* Queue.swift */; };
 		E4F75A4B6BB298DA787FC2DD /* Pods_OVMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8831883425DFD93732F5B2BA /* Pods_OVMS.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +45,9 @@
 		D89F19081F6C2D7000BFB884 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D89F190B1F6C2D7000BFB884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D89F190D1F6C2D7000BFB884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8F393F91F9C38E5001C2982 /* EnumList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnumList.swift; path = ../../../../../../../Downloads/Queue.playground/Sources/EnumList.swift; sourceTree = "<group>"; };
+		D8F393FB1F9C38F1001C2982 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkedList.swift; path = ../../../../../../../Downloads/Queue.playground/Sources/LinkedList.swift; sourceTree = "<group>"; };
+		D8F393FD1F9C392D001C2982 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		DABA7BF3C376D1A3F50E46F1 /* Pods-OVMS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OVMS.release.xcconfig"; path = "Pods/Target Support Files/Pods-OVMS/Pods-OVMS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +103,7 @@
 		D89F19001F6C2D7000BFB884 /* OVMS */ = {
 			isa = PBXGroup;
 			children = (
+				D8F393F81F9C38B9001C2982 /* Queue */,
 				D89F19011F6C2D7000BFB884 /* AppDelegate.swift */,
 				D89F19031F6C2D7000BFB884 /* ViewController.swift */,
 				D81250C11F70A806009C8259 /* SettingsViewController.swift */,
@@ -106,6 +113,16 @@
 				D89F190D1F6C2D7000BFB884 /* Info.plist */,
 			);
 			path = OVMS;
+			sourceTree = "<group>";
+		};
+		D8F393F81F9C38B9001C2982 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				D8F393FB1F9C38F1001C2982 /* LinkedList.swift */,
+				D8F393F91F9C38E5001C2982 /* EnumList.swift */,
+				D8F393FD1F9C392D001C2982 /* Queue.swift */,
+			);
+			name = Queue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +257,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D89F19041F6C2D7000BFB884 /* ViewController.swift in Sources */,
+				D8F393FE1F9C392D001C2982 /* Queue.swift in Sources */,
 				D89F19021F6C2D7000BFB884 /* AppDelegate.swift in Sources */,
+				D8F393FC1F9C38F1001C2982 /* LinkedList.swift in Sources */,
+				D8F393FA1F9C38E5001C2982 /* EnumList.swift in Sources */,
 				D81250C21F70A806009C8259 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

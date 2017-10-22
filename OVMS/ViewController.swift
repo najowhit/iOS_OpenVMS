@@ -24,9 +24,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var server_address = " "
     var username = " "
     var password = " "
-    var resultArray = [String]()
     
-    
+    var speedQueue = Queue<String>()
     let locationManager = CLLocationManager()
     
     
@@ -49,6 +48,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             //let respStr = descriptor?.stringRepresentation(metric: true)
             let respStr = descriptor?.valueImperial
             print("Observer : \(String(describing: respStr))")
+            self.speedQueue.enqueue(String(describing: respStr))
         }
         
         ObserverQueue.shared.register(observer: observer)
