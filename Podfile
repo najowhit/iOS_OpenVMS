@@ -7,4 +7,5 @@ target 'OVMS' do
 
   # Pods for OVMS
   pod 'OBD2-Swift'
+  pod 'Alamofire'
 end

@@ -18,9 +18,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let obd = OBD2()
    
-    var ip_address = " "
-    let host = "192.168.0.10"
-    var port = 35000
     var server_address = " "
     var username = " "
     var password = " "
@@ -49,6 +46,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let respStr = descriptor?.valueImperial
             print("Observer : \(String(describing: respStr))")
             self.speedQueue.enqueue(String(describing: respStr))
+            
+            self.getUserLocation()
         }
         
         ObserverQueue.shared.register(observer: observer)
@@ -63,7 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         let command = Command.Mode01.pid(number: 13)
         obd.request(repeat: command)
-        getUserLocation()
+        
         
         /*
         // Single test, we need to figure out what descriptor
@@ -72,6 +71,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             //let respStr = descriptor?.stringRepresentation(metric: true, rounded: false)
             let respStr = descriptor?.valueImperial
             print("TEST : \(String(describing: respStr))")
+         
+            speedQueue.enqueue(String(describing: respStr))
+            getUserLocation()
 
         }*/
         
@@ -123,11 +125,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let lat = userLocation.coordinate.latitude;
         locationManager.stopUpdatingLocation()
         
-        print(lat, long, resultArray)
+        var speed = speedQueue.peek()
         
         /*
          * Maybe POST to API from here
         */
+        
+        speedQueue.dequeue()
     }
     
     
