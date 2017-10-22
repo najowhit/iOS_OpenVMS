@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import OBD2Swift
+import Alamofire
 
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
@@ -39,7 +40,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         // Observer for continuous speed commands
-        let observer = Observer<Command.Mode01>()
+        /*let observer = Observer<Command.Mode01>()
         
         observer.observe(command: .pid(number: 13)) { (descriptor) in
             //let respStr = descriptor?.stringRepresentation(metric: true)
@@ -50,7 +51,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.getUserLocation()
         }
         
-        ObserverQueue.shared.register(observer: observer)
+        ObserverQueue.shared.register(observer: observer)*/
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,10 +62,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func sendButtonAction() {
         
         let command = Command.Mode01.pid(number: 13)
-        obd.request(repeat: command)
+        //obd.request(repeat: command)
         
         
-        /*
+        
         // Single test, we need to figure out what descriptor
         // gives a respStr we can work with - .stringRepresentation works
         obd.request(command: command) { (descriptor) in
@@ -72,10 +73,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let respStr = descriptor?.valueImperial
             print("TEST : \(String(describing: respStr))")
          
-            speedQueue.enqueue(String(describing: respStr))
-            getUserLocation()
+            self.speedQueue.enqueue(String(describing: respStr))
+            self.getUserLocation()
 
-        }*/
+        }
         
         
         
@@ -125,11 +126,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let lat = userLocation.coordinate.latitude;
         locationManager.stopUpdatingLocation()
         
-        var speed = speedQueue.peek()
+        let speed = speedQueue.peek()
+        
         
         /*
          * Maybe POST to API from here
-        */
+         */
+        let parameters: Parameters = [
+            "user": username,
+            "speed": speed!,
+            "latitude": lat,
+            "longitude": long
+        ]
+        
+        
+        Alamofire.request(server_address, method: .post, parameters: parameters, encoding: JSONEncoding.default)
         
         speedQueue.dequeue()
     }
