@@ -20,6 +20,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let obd = OBD2()
    
     var server_address = " "
+    let dev_address = "http://localhost:3000/vehicleData/"
     var username = " "
     var password = " "
     
@@ -70,7 +71,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // gives a respStr we can work with - .stringRepresentation works
         obd.request(command: command) { (descriptor) in
             //let respStr = descriptor?.stringRepresentation(metric: true, rounded: false)
-            let respStr = descriptor?.valueImperial
+            let resp = descriptor?.valueImperial
+            let respStr = String(resp!)
             print("TEST : \(String(describing: respStr))")
          
             self.speedQueue.enqueue(String(describing: respStr))
@@ -127,6 +129,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         
         let speed = speedQueue.peek()
+        print(speed)
         
         
         /*
@@ -134,13 +137,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
          */
         let parameters: Parameters = [
             "user": username,
-            "speed": speed!,
+            "speed": speed,
             "latitude": lat,
             "longitude": long
         ]
         
         
-        Alamofire.request(server_address, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request(dev_address, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
+            print("All Response Info: \(response)")
+            
+            if let data = response.result.value, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)")
+            }
+        }
+        
         
         speedQueue.dequeue()
     }
