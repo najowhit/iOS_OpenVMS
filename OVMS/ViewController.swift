@@ -41,18 +41,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         // Observer for continuous speed commands
-        /*let observer = Observer<Command.Mode01>()
+        let observer = Observer<Command.Mode01>()
         
         observer.observe(command: .pid(number: 13)) { (descriptor) in
             //let respStr = descriptor?.stringRepresentation(metric: true)
-            let respStr = descriptor?.valueImperial
+            let resp = descriptor?.valueImperial
+            let respStr = String(resp!)
             print("Observer : \(String(describing: respStr))")
-            self.speedQueue.enqueue(String(describing: respStr))
             
+            self.speedQueue.enqueue(String(describing: respStr))
             self.getUserLocation()
         }
         
-        ObserverQueue.shared.register(observer: observer)*/
+        ObserverQueue.shared.register(observer: observer)
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,13 +64,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func sendButtonAction() {
         
         let command = Command.Mode01.pid(number: 13)
-        //obd.request(repeat: command)
+        obd.request(repeat: command)
         
         
         
         // Single test, we need to figure out what descriptor
         // gives a respStr we can work with - .stringRepresentation works
-        obd.request(command: command) { (descriptor) in
+        /*obd.request(command: command) { (descriptor) in
             //let respStr = descriptor?.stringRepresentation(metric: true, rounded: false)
             let resp = descriptor?.valueImperial
             let respStr = String(resp!)
@@ -78,7 +79,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.speedQueue.enqueue(String(describing: respStr))
             self.getUserLocation()
 
-        }
+        }*/
         
         
         
@@ -129,7 +130,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         
         let speed = speedQueue.peek()
-        print(speed)
+        
         
         
         /*
