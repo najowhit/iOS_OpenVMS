@@ -9,7 +9,6 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
-    @IBOutlet weak var server_address: UITextField!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
@@ -26,7 +25,7 @@ class SettingsViewController: UITableViewController {
     @IBAction func buttonTapped(_ sender: UIButton) {
         
         // We need to ensure that an IP address is not an empty string
-        if username.text != "" && server_address.text != "" {
+        if username.text != "" {
             performSegue(withIdentifier: "vcSegue", sender: self)
         }
     }
@@ -38,7 +37,6 @@ class SettingsViewController: UITableViewController {
         if segue.identifier == "vcSegue" {
             let targetVC = segue.destination as! ViewController
         
-            targetVC.server_address = server_address.text!
             targetVC.username = username.text!
             targetVC.password = password.text!
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreLocation
-import OBD2Swift
+import OBD2
 import Alamofire
 
 
@@ -18,8 +18,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var textView: UITextView!
     
     let obd = OBD2()
-   
-    var server_address = " "
+    
+    let aws_address = ""
     let dev_address = "http://localhost:3000/vehicleData/"
     var username = " "
     var password = " "
