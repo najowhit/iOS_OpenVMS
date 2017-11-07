@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		D81250C21F70A806009C8259 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81250C11F70A806009C8259 /* SettingsViewController.swift */; };
 		D86059911F79D6B100903356 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86059901F79D6B100903356 /* CoreLocation.framework */; };
-		D8629EC01FB1658E000F90ED /* Queue in Resources */ = {isa = PBXBuildFile; fileRef = D8629EBF1FB1658E000F90ED /* Queue */; };
+		D873BBE21FB1676D0011BC10 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873BBE11FB1676D0011BC10 /* Queue.swift */; };
+		D873BBE41FB167880011BC10 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873BBE31FB167880011BC10 /* LinkedList.swift */; };
+		D873BBE61FB1678B0011BC10 /* EnumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873BBE51FB1678B0011BC10 /* EnumList.swift */; };
 		D89F19021F6C2D7000BFB884 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89F19011F6C2D7000BFB884 /* AppDelegate.swift */; };
 		D89F19041F6C2D7000BFB884 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89F19031F6C2D7000BFB884 /* ViewController.swift */; };
 		D89F19071F6C2D7000BFB884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89F19051F6C2D7000BFB884 /* Main.storyboard */; };
@@ -23,7 +25,9 @@
 		8831883425DFD93732F5B2BA /* Pods_OVMS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OVMS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81250C11F70A806009C8259 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D86059901F79D6B100903356 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		D8629EBF1FB1658E000F90ED /* Queue */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Queue; sourceTree = "<group>"; };
+		D873BBE11FB1676D0011BC10 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		D873BBE31FB167880011BC10 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
+		D873BBE51FB1678B0011BC10 /* EnumList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumList.swift; sourceTree = "<group>"; };
 		D89F18FE1F6C2D7000BFB884 /* OVMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OVMS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89F19011F6C2D7000BFB884 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D89F19031F6C2D7000BFB884 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +92,9 @@
 		D89F19001F6C2D7000BFB884 /* OVMS */ = {
 			isa = PBXGroup;
 			children = (
-				D8629EBF1FB1658E000F90ED /* Queue */,
+				D873BBE51FB1678B0011BC10 /* EnumList.swift */,
+				D873BBE31FB167880011BC10 /* LinkedList.swift */,
+				D873BBE11FB1676D0011BC10 /* Queue.swift */,
 				D89F19011F6C2D7000BFB884 /* AppDelegate.swift */,
 				D89F19031F6C2D7000BFB884 /* ViewController.swift */,
 				D81250C11F70A806009C8259 /* SettingsViewController.swift */,
@@ -165,7 +171,6 @@
 			files = (
 				D89F190C1F6C2D7000BFB884 /* LaunchScreen.storyboard in Resources */,
 				D89F19091F6C2D7000BFB884 /* Assets.xcassets in Resources */,
-				D8629EC01FB1658E000F90ED /* Queue in Resources */,
 				D89F19071F6C2D7000BFB884 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,7 +240,10 @@
 			files = (
 				D89F19041F6C2D7000BFB884 /* ViewController.swift in Sources */,
 				D89F19021F6C2D7000BFB884 /* AppDelegate.swift in Sources */,
+				D873BBE41FB167880011BC10 /* LinkedList.swift in Sources */,
 				D81250C21F70A806009C8259 /* SettingsViewController.swift in Sources */,
+				D873BBE61FB1678B0011BC10 /* EnumList.swift in Sources */,
+				D873BBE21FB1676D0011BC10 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
