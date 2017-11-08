@@ -72,8 +72,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let command = Command.Mode01.pid(number: 13)
         obd.request(repeat: command)
         
-        
-        
         // Single test, we need to figure out what descriptor
         // gives a respStr we can work with - .stringRepresentation works
         /*obd.request(command: command) { (descriptor) in
@@ -91,31 +89,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-
-    func appendToTextField(string: String){
-        textView.text = textView.text.appending("\n\(string)")
-    }
-    
-    /* I need to POST GPS data and the misc. data from the OBD to an API.
-     * Essentially in a loop (executed every n seconds) -> send command -> clean data -> get GPS -> send
-     * as JSON to API. This collection should continue if the app is minimized(until it 
-     * finishes the curent loop), but if the user presses back (to settings) it should stop.
-     * When the app is minimized, save state as best as possible.
-     */
-    
-    /* The user should be notified by pop up if the socket connection ends. Such as a car being
-     * shut off.
-     */
-    
-    /* The paragraph above should be executed on a background thread (I think). Or, the application
-     * should stop collecting data when it no longer detects the device
-    */
-    
-    /*
-     * Send a flag that shows wether or not the user stopped collecting.
-    */
-    
-    
     func getUserLocation() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -125,10 +98,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
     }
-    
-    /*
-     * I need to pair the OBD response with this latitude, longitude data somehow.
-     */
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0]
         let long = userLocation.coordinate.longitude;
@@ -137,11 +107,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         let speed = speedQueue.peek()
         
-        
-        
-        /*
-         * Maybe POST to API from here
-         */
         let parameters: Parameters = [
             "user": username,
             "speed": speed,
@@ -149,7 +114,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             "longitude": long
         ]
         
-        
+        // Works as expected with dev_address, need to get data to AWS hosted API
         Alamofire.request(aws_address, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
             print("All Response Info: \(response)")
             
@@ -160,6 +125,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         
         speedQueue.dequeue()
+    }
+    
+    func appendToTextField(string: String){
+        textView.text = textView.text.appending("\n\(string)")
     }
     
     
