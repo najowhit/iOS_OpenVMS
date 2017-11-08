@@ -22,7 +22,7 @@
                             <rect key="frame" x="0.0" y="161.5" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                            <state key="normal" title="Collect Data"/>
+                            <state key="normal" title="Authenticate"/>
                             <connections>
                                 <action selector="buttonTapped:" destination="j3p-K1-XAD" eventType="touchUpInside" id="EaZ-Eu-qzh"/>
                             </connections>
@@ -126,18 +126,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Grw-tg-E2W">
-                                <rect key="frame" x="25" y="28" width="322" height="593"/>
+                                <rect key="frame" x="25" y="28" width="322" height="465"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HAP-16-ESJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="322" height="563"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="322" height="435"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iy8-pf-ckN">
-                                        <rect key="frame" x="0.0" y="563" width="322" height="30"/>
-                                        <state key="normal" title="Send Data"/>
+                                        <rect key="frame" x="0.0" y="435" width="322" height="30"/>
+                                        <state key="normal" title="Collect Data"/>
                                         <connections>
                                             <action selector="sendButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="BRZ-gs-GFA"/>
                                         </connections>

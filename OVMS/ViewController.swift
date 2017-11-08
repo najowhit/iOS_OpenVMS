@@ -20,16 +20,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // Default constructor sets (host: "192.168.0.10", port: 35000)
     let obd = OBD2()
-    //let obd = OBD2(host : "192.168.0.10", port : 35000)
+    //let obd = OBD2(host : "192.168.0.11", port : 35000)
     
     // There is an issue with how I set up the static IP address.
     // Try setting IP to 192.168.0.11 and Subnet to 255.255.255.0
     // Leave DNS blank
-    let aws_address = "http://ec2-18-216-94-71.us-east-2.compute.amazonaws.com:3000/vehicleData/"
+    let aws_address = "http://ec2-18-216-160-179.us-east-2.compute.amazonaws.com:3000/vehicleData/"
     let dev_address = "http://localhost:3000/vehicleData/"
     var username = " "
     var password = " "
     
+    /* We need a queue structure to maintain speed data
+     * while we wait for the asynchronous latitude longitude data
+     */
     var speedQueue = Queue<String>()
     let locationManager = CLLocationManager()
     
