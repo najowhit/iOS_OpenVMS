@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D81250C21F70A806009C8259 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81250C11F70A806009C8259 /* SettingsViewController.swift */; };
-		D856C4241FB38CF2000E7C0C /* IUPUI.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D856C4231FB38CF2000E7C0C /* IUPUI.gpx */; };
 		D86059911F79D6B100903356 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D86059901F79D6B100903356 /* CoreLocation.framework */; };
 		D873BBEB1FB1693C0011BC10 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873BBE81FB1693C0011BC10 /* Queue.swift */; };
 		D873BBEC1FB1693C0011BC10 /* EnumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873BBE91FB1693C0011BC10 /* EnumList.swift */; };
@@ -25,7 +24,6 @@
 		5C1C5732D2EEC72164524667 /* Pods-OVMS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OVMS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OVMS/Pods-OVMS.debug.xcconfig"; sourceTree = "<group>"; };
 		8831883425DFD93732F5B2BA /* Pods_OVMS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OVMS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81250C11F70A806009C8259 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		D856C4231FB38CF2000E7C0C /* IUPUI.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IUPUI.gpx; sourceTree = "<group>"; };
 		D86059901F79D6B100903356 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D873BBE81FB1693C0011BC10 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		D873BBE91FB1693C0011BC10 /* EnumList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumList.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 		D89F19001F6C2D7000BFB884 /* OVMS */ = {
 			isa = PBXGroup;
 			children = (
-				D856C4231FB38CF2000E7C0C /* IUPUI.gpx */,
 				D873BBE91FB1693C0011BC10 /* EnumList.swift */,
 				D873BBEA1FB1693C0011BC10 /* LinkedList.swift */,
 				D873BBE81FB1693C0011BC10 /* Queue.swift */,
@@ -174,7 +171,6 @@
 			files = (
 				D89F190C1F6C2D7000BFB884 /* LaunchScreen.storyboard in Resources */,
 				D89F19091F6C2D7000BFB884 /* Assets.xcassets in Resources */,
-				D856C4241FB38CF2000E7C0C /* IUPUI.gpx in Resources */,
 				D89F19071F6C2D7000BFB884 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
